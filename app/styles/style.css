@@ -1,0 +1,55 @@
+#wrapper {
+    padding-left: 250px;
+    transition: all 0.4s ease 0s;
+}
+
+#sidebar-wrapper {
+    margin-left: -250px;
+    left: 250px;
+    width: 250px;
+    background: #CCC;
+    position: fixed;
+    height: 100%;
+    overflow-y: scroll;
+    transition: all 0.4s ease 0s;
+    text-align: center;
+}
+
+#page-content-wrapper {
+    width: 100%;
+}
+
+#room-list {
+    text-align: justify;
+}
+
+#modal-input {
+    margin-bottom: 0px;
+    text-align: center;
+}
+
+#create-button {
+    margin-top: 15px;
+    margin-bottom: 50px;
+}
+
+@media (max-width:767px) {
+    #wrapper {
+        padding-left: 0;
+    }
+    
+    #sidebar-wrapper {
+        left: 0;
+    }
+    
+    #wrapper.active {
+        position: relative;
+        left: 250px;
+    }
+    
+    #wrapper.active #sidebar-wrapper {
+        left: 250px;
+        width: 250px;
+        transition: all 0.4 ease 0s;
+    }
+}
