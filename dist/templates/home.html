@@ -17,10 +17,20 @@
                     </div>
                     <ul class="list-group">
                         <li class="list-group-item" ng-repeat="message in messages">
-                            <h5 class="list-group-item-heading"><b>{{message.username}}</b><small class="pull-right">{{message.sentAt}}</small></h5>
+                            <h5 class="list-group-item-heading"><b>{{message.username}}</b><small class="pull-right">{{message.sentAt | date:'hh:mm a MMM d'}}</small></h5>
                             <p class="list-group-item-text">{{message.content}}</p>
                         </li> 
                     </ul>
+                </div>
+            </div>
+            <div class="row" ng-hide="roomName === 'Please Select a Room'">
+                <div class="col-md-12">
+                    <div class="input-group input-group-lg">
+                        <input type="text" class="form-control" ng-model="newMessage" placeholder="Enter new message...">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button" ng-disabled="newMessage === ''" ng-click="sendMessage()">Submit</button>
+                        </span>
+                    </div>
                 </div>
             </div>
         </div>

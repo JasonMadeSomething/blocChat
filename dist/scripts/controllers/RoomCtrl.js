@@ -1,8 +1,9 @@
 (function() {
-    function RoomCtrl($scope, $uibModal, Room){
+    function RoomCtrl($scope, $uibModal, $cookies, Room, Message){
+        
         $scope.allRooms = Room.all;
         
-        
+        $scope.newMessage = '';
         
         $scope.open = function() {
             
@@ -34,10 +35,19 @@
         
         $scope.roomName = "Please Select a Room";
         
+        $scope.sendMessage = function() {
+            Message.send({
+                username: $cookies.get('blocChatCurrentUser'),
+                roomId: $scope.activeRoom.$id,
+                sentAt: Firebase.ServerValue.TIMESTAMP,
+                content: $scope.newMessage
+            });
+            $scope.newMessage = '';
+        }
     }
     
     
     angular
         .module('blocChat')
-        .controller('RoomCtrl', ['$scope', '$uibModal', 'Room', RoomCtrl]);
+        .controller('RoomCtrl', ['$scope', '$uibModal', '$cookies', 'Room', 'Message', RoomCtrl]);
 })();
