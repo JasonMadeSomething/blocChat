@@ -8,9 +8,14 @@
             rooms.$add({name: newRoom});
         };
         
+        var returnMessages = function(roomId) {
+            return $firebaseArray(firebaseRef.child('messages').orderByChild('roomId').equalTo(roomId));
+        };
+        
         return {
             all: rooms,
-            createRoom: addRoom
+            createRoom: addRoom,
+            getMessages: returnMessages
         };
     }
     

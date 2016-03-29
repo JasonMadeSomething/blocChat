@@ -5,14 +5,22 @@
             <button id="create-button" type="button" class="btn btn-default" ng-click="open()">Create Room</button>
 
             <div class="list-group" id="room-list">
-                <button type="button" class="list-group-item" ng-repeat="room in allRooms">{{room.name}}</button>
+                <button type="button" class="list-group-item" ng-class="{active : isActive(room)}" ng-repeat="room in allRooms" ng-click="setRoom(room)">{{room.name}}</button>
             </div>
     </aside>
     <div id="page-content-wrapper">
         <div class="page-content">
             <div class="row">
                 <div class="col-md-12">
-                    
+                    <div class="page-header text-center">
+                        <h2>{{roomName}}</h2>
+                    </div>
+                    <ul class="list-group">
+                        <li class="list-group-item" ng-repeat="message in messages">
+                            <h5 class="list-group-item-heading"><b>{{message.username}}</b><small class="pull-right">{{message.sentAt}}</small></h5>
+                            <p class="list-group-item-text">{{message.content}}</p>
+                        </li> 
+                    </ul>
                 </div>
             </div>
         </div>
